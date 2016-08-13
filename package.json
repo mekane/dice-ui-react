@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel": "babel --presets es2015,react --watch src/ --out-dir build/"
+    "babel": "babel --watch src/ --out-dir build/",
+    "start": "node_modules/.bin/http-server -c-1 -o -p9898"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,8 @@
     "babel-cli": "^6.11.4",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
-    "react": "^15.3.0"
+    "http-server": "^0.9.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
   }
 }

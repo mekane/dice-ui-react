@@ -1,0 +1,108 @@
+body {
+    font-family: arial, serif;
+    font-size: 18px;
+}
+
+.dice-form {
+
+}
+
+.dice-form__button {
+    display: block;
+}
+
+.dice-form__roll {
+    margin-top: 16px;
+    font-size: 24px;
+    width: 50%;
+}
+
+.dice-form__plus {
+    font-size: 20px;
+}
+
+.dice-form__modifier {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-family: arial, serif;
+    font-size: 18px;
+    width: 40px;
+}
+
+
+.stats {
+    align-items: flex-end;
+    display: flex;
+    /* justify-content: space-around; */
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+}
+
+.stats__item {
+    background: #dff;
+    border: 1px solid #ccc;
+    flex: 0 1 20px;
+    padding: 0 5px;
+    position: relative;
+}
+
+.stats__item__roll {
+    bottom: -40px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.stats__item__percentage {
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+
+.dice-input {
+    display: inline-block;
+}
+
+.dice-input__number {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-family: arial, serif;
+    font-size: 18px;
+    text-align: right;
+    width: 30px;
+}
+
+.dice-input__d{
+}
+
+.dice-input__size {
+    padding-right: 25px;
+}
+
+.dice-input__controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+}
+
+.dice-input__controls__button {
+    flex: 0 1 auto;
+}
+
+.dice-input__controls__button-less {
+
+}
+
+.dice-input__controls__button-more {
+
+}
+
+.dice-input__ {
+
+}
