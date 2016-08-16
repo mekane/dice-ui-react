@@ -6,7 +6,8 @@
   "scripts": {
     "babel": "babel --watch src/ --out-dir build/",
     "serve": "node_modules/.bin/http-server -c-1 -o -p9898",
-    "start": "npm run serve & npm run babel"
+    "start": "npm run babel & npm run serve",
+    "clean": "rm -rf build"
   },
   "author": "",
   "license": "ISC",
