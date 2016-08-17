@@ -7,13 +7,10 @@ body {
 
 }
 
-.dice-form__button {
+.dice-form__roll-button {
     display: block;
-}
-
-.dice-form__roll {
-    margin-top: 16px;
     font-size: 24px;
+    margin-top: 16px;
     width: 50%;
 }
 
