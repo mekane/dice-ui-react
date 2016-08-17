@@ -1,4 +1,9 @@
 class DiceInput extends React.Component {
+    static get propTypes() {
+        return {
+            size: React.PropTypes.number.isRequired
+        };
+    }
 
     constructor(props) {
         super(props);
@@ -39,3 +44,5 @@ class DiceInput extends React.Component {
         </div>
     }
 }
+
+//DiceInput.propTypes = { size: React.PropTypes.number.isRequired };
