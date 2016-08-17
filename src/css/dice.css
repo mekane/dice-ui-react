@@ -91,18 +91,6 @@ body {
     margin-top: 8px;
 }
 
-.dice-input__controls__button {
+.dice-input__button {
     flex: 0 1 auto;
-}
-
-.dice-input__controls__button-less {
-
-}
-
-.dice-input__controls__button-more {
-
-}
-
-.dice-input__ {
-
 }

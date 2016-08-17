@@ -33,8 +33,8 @@ class DiceInput extends React.Component {
             <span className="dice-input__d">d</span>
             <span className="dice-input__size">{ this.props.size }</span>
             <div className="dice-input__controls">
-                <button className="dice-input__controls__button" type="button" onClick={ this.decrementDice }>-</button>
-                <button className="dice-input__controls__button" type="button" onClick={ this.incrementDice }>+</button>
+                <button className="dice-input__button" type="button" onClick={ this.decrementDice }>-</button>
+                <button className="dice-input__button" type="button" onClick={ this.incrementDice }>+</button>
             </div>
         </div>
     }
