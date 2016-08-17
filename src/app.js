@@ -1,4 +1,4 @@
 ReactDOM.render(
-    <DiceInput size="6"></DiceInput>,
+    <DiceRoller></DiceRoller>,
     document.getElementById('dice-roller')
 );
