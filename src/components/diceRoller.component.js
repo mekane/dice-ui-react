@@ -3,6 +3,8 @@ class DiceRoller extends React.Component {
         super(props);
 
         this.diceChanged = this.diceChanged.bind(this);
+        this.modifierChanged = this.modifierChanged.bind(this);
+        this.roll = this.roll.bind(this);
 
         this.state = {
             diceConfig: [
@@ -11,10 +13,17 @@ class DiceRoller extends React.Component {
                 {number: 0, size: 8},
                 {number: 0, size: 10},
                 {number: 0, size: 12}
-            ]
+            ],
+            modifier: 0,
+            stats: {}
         };
+    }
 
-        this.diceString = '';
+    getDiceString() {
+        return this.state.diceConfig
+            .map(cfg => cfg.number ? `${cfg.number}d${cfg.size} ` : '')
+            .join('')
+            .concat(this.state.modifier ? ` + ${this.state.modifier}` : '');
     }
 
     diceChanged(size, number) {
@@ -24,22 +33,43 @@ class DiceRoller extends React.Component {
             else
                 return {size: cfg.size, number: cfg.number};
         });
-        this.diceString = newConfig.map(cfg => cfg.number ? `${cfg.number}d${cfg.size} ` : '').join('');
 
         this.setState({diceConfig: newConfig});
-        console.log(this.diceString);
+    }
+
+    modifierChanged(event) {
+        this.setState({modifier: Number(event.target.value)})
     }
 
     roll() {
-        console.log('roll!');
+        let diceToRoll = window.dice.convertDiceToListOfDiceSizes(this.state.diceConfig);
+        let rolls = window.dice.computeRollsForDice(diceToRoll);
+        let stats = window.dice.getPercentageStatsFromTotals(window.dice.combineTotals(rolls));
+        let modifier = this.state.modifier || 0;
+        if ( modifier ) {
+            let modifiedStats = {};
+            Object.keys(stats).forEach(function (key) {
+                let newKey = Number(key) + modifier;
+                modifiedStats[newKey] = stats[key];
+            });
+            this.setState({stats: modifiedStats});
+        }
+        else {
+            this.setState({stats: stats});
+        }
     }
 
     render() {
         return (
             <div className="dice-roller">
                 { this.state.diceConfig.map(cfg =>
-                    <DiceInput key={`d${cfg.size}`} number={cfg.number} size={cfg.size} onDiceChange={this.diceChanged}></DiceInput>) }
-                <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll { this.diceString }</button>
+                    <DiceInput key={`d${cfg.size}`} number={cfg.number} size={cfg.size} onDiceChange={this.diceChanged}></DiceInput>)
+                }
+                <span className="dice-form__plus">+</span>
+                <input className="dice-form__modifier" type="text" value={this.state.modifier} onChange={this.modifierChanged} />
+                <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll { this.getDiceString() }</button>
+                <StatsChart stats={this.state.stats}></StatsChart>
+                <GreaterThanStatsChart stats={this.state.stats}></GreaterThanStatsChart>
             </div>
         )
     }
