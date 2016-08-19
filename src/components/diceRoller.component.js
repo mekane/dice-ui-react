@@ -44,6 +44,7 @@ class DiceRoller extends React.Component {
     roll() {
         let stats = window.dice.getStatsForDice(this.state.diceConfig, this.state.modifier, 2);
         this.setState({stats: stats});
+        this.props.history.add({diceConfig: this.state.diceConfig, modifier: this.state.modifier});
     }
 
     render() {
@@ -57,6 +58,7 @@ class DiceRoller extends React.Component {
                 <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll { this.getDiceString() }</button>
                 <StatsChart stats={this.state.stats}></StatsChart>
                 <GreaterThanStatsChart stats={this.state.stats}></GreaterThanStatsChart>
+                <History list={this.props.history.list()}></History>
             </div>
         )
     }

@@ -91,3 +91,7 @@ body {
 .dice-input__button {
     flex: 0 1 auto;
 }
+
+.history {
+    border: 1px solid red;
+}
