@@ -3,7 +3,7 @@ function getGreaterThanProbabilityForRoll(roll, stats) {
         .reduce((probability, stat) => {
             let summedDudes = Number(probability) + Number(stats[stat]);
             if(Number(stat) >= Number(roll))
-                return summedDudes.toFixed(2);
+                return summedDudes.toFixed(1);
             else
                 return probability;
         }, 0);

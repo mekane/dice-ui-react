@@ -42,7 +42,7 @@ class DiceRoller extends React.Component {
     }
 
     roll() {
-        let stats = window.dice.getStatsForDice(this.state.diceConfig, this.state.modifier, 2);
+        let stats = window.dice.getStatsForDice(this.state.diceConfig, this.state.modifier, 9);
         this.setState({stats: stats});
         this.props.history.add({diceConfig: this.state.diceConfig, modifier: this.state.modifier});
     }
