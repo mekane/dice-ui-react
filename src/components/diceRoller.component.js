@@ -42,21 +42,8 @@ class DiceRoller extends React.Component {
     }
 
     roll() {
-        let diceToRoll = window.dice.convertDiceToListOfDiceSizes(this.state.diceConfig);
-        let rolls = window.dice.computeRollsForDice(diceToRoll);
-        let stats = window.dice.getPercentageStatsFromTotals(window.dice.combineTotals(rolls));
-        let modifier = this.state.modifier || 0;
-        if ( modifier ) {
-            let modifiedStats = {};
-            Object.keys(stats).forEach(function (key) {
-                let newKey = Number(key) + modifier;
-                modifiedStats[newKey] = stats[key];
-            });
-            this.setState({stats: modifiedStats});
-        }
-        else {
-            this.setState({stats: stats});
-        }
+        let stats = window.dice.getStatsForDice(this.state.diceConfig, this.state.modifier, 2);
+        this.setState({stats: stats});
     }
 
     render() {
