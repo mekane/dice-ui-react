@@ -1,12 +1,8 @@
 function getGreaterThanProbabilityForRoll(roll, stats) {
     return Object.keys(stats)
-        .reduce((probability, stat) => {
-            let summedDudes = Number(probability) + Number(stats[stat]);
-            if(Number(stat) >= Number(roll))
-                return summedDudes.toFixed(1);
-            else
-                return probability;
-        }, 0);
+        .filter((item) => Number(item) >= Number(roll))
+        .reduce((acc, item) => Number(acc) + Number(stats[item]), 0)
+        .toFixed(1);
 }
 
 const GreaterThanStatsChart = (props) => (
