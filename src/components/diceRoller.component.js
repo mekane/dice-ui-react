@@ -19,13 +19,6 @@ class DiceRoller extends React.Component {
         };
     }
 
-    getDiceString() {
-        return this.state.diceConfig
-            .map(cfg => cfg.number ? `${cfg.number}d${cfg.size} ` : '')
-            .join('')
-            .concat(this.state.modifier ? ` + ${this.state.modifier}` : '');
-    }
-
     diceChanged(size, number) {
         let newConfig = this.state.diceConfig.map(cfg => {
             if (cfg.size === size)
@@ -55,7 +48,7 @@ class DiceRoller extends React.Component {
                 }
                 <span className="dice-form__plus">+</span>
                 <input className="dice-form__modifier" type="text" value={this.state.modifier} onChange={this.modifierChanged} />
-                <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll { this.getDiceString() }</button>
+                <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll <DiceString data={this.state}></DiceString></button>
                 <StatsChart stats={this.state.stats}></StatsChart>
                 <GreaterThanStatsChart stats={this.state.stats}></GreaterThanStatsChart>
                 <History list={this.props.history.list()}></History>
