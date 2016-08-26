@@ -3,6 +3,7 @@ class DiceRoller extends React.Component {
         super(props);
 
         this.diceChanged = this.diceChanged.bind(this);
+        this.loadConfig = this.loadConfig.bind(this);
         this.modifierChanged = this.modifierChanged.bind(this);
         this.roll = this.roll.bind(this);
 
@@ -34,6 +35,11 @@ class DiceRoller extends React.Component {
         this.setState({modifier: Number(event.target.value)})
     }
 
+    loadConfig(newConfig) {
+        this.setState(newConfig); //replaceState
+        this.roll();
+    }
+
     roll() {
         let stats = window.dice.getStatsForDice(this.state.diceConfig, this.state.modifier, 9);
         this.setState({stats: stats});
@@ -53,7 +59,7 @@ class DiceRoller extends React.Component {
                 <StatsChart stats={this.state.stats}></StatsChart>
                 <GreaterThanStatsChart stats={this.state.stats}></GreaterThanStatsChart>
                 <h2>History:</h2>
-                <History list={this.props.history.list()}></History>
+                <History list={this.props.history.list()} loadConfig={this.loadConfig}></History>
             </div>
         )
     }
