@@ -92,6 +92,20 @@ body {
     flex: 0 1 auto;
 }
 
+h1 {
+
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
 .history {
-    border: 1px solid red;
+    list-style: none;
+    margin: 4px;
+    padding: 0;
+}
+
+.history__item {
+    padding: 8px;
 }

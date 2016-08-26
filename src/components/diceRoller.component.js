@@ -43,6 +43,7 @@ class DiceRoller extends React.Component {
     render() {
         return (
             <div className="dice-roller">
+                <h1>Dice Roller</h1>
                 { this.state.diceConfig.map(cfg =>
                     <DiceInput key={`d${cfg.size}`} number={cfg.number} size={cfg.size} onDiceChange={this.diceChanged}></DiceInput>)
                 }
@@ -51,6 +52,7 @@ class DiceRoller extends React.Component {
                 <button className="dice-form__roll-button" type="button" onClick={this.roll}>Roll <DiceString data={this.state}></DiceString></button>
                 <StatsChart stats={this.state.stats}></StatsChart>
                 <GreaterThanStatsChart stats={this.state.stats}></GreaterThanStatsChart>
+                <h2>History:</h2>
                 <History list={this.props.history.list()}></History>
             </div>
         )
