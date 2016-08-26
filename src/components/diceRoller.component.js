@@ -36,8 +36,7 @@ class DiceRoller extends React.Component {
     }
 
     loadConfig(newConfig) {
-        this.setState(newConfig); //replaceState
-        this.roll();
+        this.setState(newConfig, this.roll);
     }
 
     roll() {
